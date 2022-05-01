@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>detail</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="detail.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/3bee1915b3.js" crossorigin="anonymous"></script>
+
+    <!-- mawin -->
+    <!-- mawin -->
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background: #9CECFB;
+            /* fallback for old browsers */
+            background: -webkit-linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
+            /* Chrome 10-25, Safari 5.1-6 */
+            background: linear-gradient(to right, #0052D4, #65C7F7, #9CECFB);
+            /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        }
+
+        .container {
+            margin: 0 auto;
+        }
+
+        .box {
+            padding: 20px;
+            background-color: white;
+            border-radius: 20px;
+            overflow: hidden;
+        }
+
+        .left {
+            float: left;
+        }
+
+        .right {
+            float: right;
+        }
+
+        .qty {
+            border: none;
+            outline: none;
+            width: 21px;
+        }
+
+        .inpqty {
+            margin-left: 20px;
+        }
+
+        .update {
+            padding: 5px 10px;
+            background-color: #eff0f5;
+            font-size: 15px;
+            margin-left: 7px;
+            margin-right: 14px;
+            color: #a1a1a2;
+            transition: all 0.5s;
+        }
+
+        .minus {
+            cursor: not-allowed;
+        }
+
+        .minus:hover {
+            background-color: #c1c1c7;
+            transition: all 0.5s;
+        }
+
+        .plus {
+            cursor: pointer;
+        }
+
+        .plus:hover {
+            background-color: #c1c1c7;
+            transition: all 0.5s;
+        }
+
+        .paragraph {
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .button {
+            margin-top: 40px;
+        }
+
+        .btn1 {
+            background-color: #033A3A;
+            color: white;
+            padding: 7px 10px;
+            border-radius: 17px;
+            border: none;
+            outline: 0 !important;
+            width: 200px;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        .btn1:hover {
+            background-color: #1c6969;
+            transition: all 0.5s;
+        }
+
+        .cart {
+            margin-left: 20px;
+        }
+
+        #detail {
+            margin-left: 10px;
+        }
+
+        #price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #D95252;
+        }
+
+        /* *:focus {
+            outline: 0 !important;
+        } */
+        #qty_auto {
+            position: absolute;
+            padding: 1px;
+            background-color: orange;
+            border-radius: 50%;
+            width: 20px;
+            text-align: center;
+            display: none;
+            font-size: 12px;
+            top: -10px;
+            right: 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="product.html" style="margin-left: 10%;cursor: pointer;">
+            <img src="img/logo.jpg" alt="LOGO" width="100vw"></a>
+        </a>
+        <nav>
+            <div id="history" class="nav_link"><a href="history.html"
+                    style="font-weight: bold;cursor: pointer;">ประวัติการสั่งซื้อ</a>
+            </div>
+            <a id="basketicon" href="basket.html" style="position: relative;color: black;" class="nav_link"><i
+                    class="fa fa-shopping-cart" aria-hidden="true"></i>
+                <p style="position: absolute;" id="qty_auto"></p>
+            </a>
+            <div class="nav_link" style="position: relative;">
+                <a id="Profile" class="user" style="margin-right: 100px;cursor: pointer;"><img src="" alt=""
+                    id="profile33" width="25px" height="25px" style="object-fit: cover; border-radius: 100%;position: relative;top: -2px;"></a>
+                <div id="hoverDropdown" class="hoverDropdown"
+                    style="position: absolute; display: none; background-color: white;">
+                    <p><a class="menu" href="Profile.html">บัญชี</a></p>
+                    <p><a id="approveid" class="menu" href="approve.html">อนุมติสินค้า</a></p>
+                    <div class="d-flex justify-content-end">
+                        <button id="out" class="out">Out</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" id="container">
+        <div style="height: 120px;"></div>
+        <h1 style="text-align: center; color: white;">รายละเอียดสินค้า</h1>
+        <br><br>
+        <div class="box">
+            <div class="row">
+
+                <div class="col-md-4">
+                    <img id="img" src="" width="300px" alt="">
+                </div>
+
+                <div class="col-md-8">
+                    <div style="margin-top: 45px;" id="title"></div>
+                    <hr>
+                    <div id="price"></div><br>
+                    <div class="d-flex justify-content-start">
+                        <div class="d-flex align-items-center">
+                            <span class="inpqty1">QTY :</span><span class="inpqty">
+                                <span class="update minus paragraph" id="minus"><i class="fas fa-minus"></i></span>
+                                <input class="qty" id="qty" type="number" value="1" min="0">
+                                <span class="update plus paragraph" id="plus"><i class="fas fa-plus"></i></span>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="button">
+                        <button class="buy btn1" id="buy">สั่งซื้อสินค้า</button>
+                        <button class="cart btn1" id="cart">เพิ่มสินค้าลงตะกร้า</button>
+                    </div>
+
+                </div>
+
+            </div>
+            <hr>
+            <p>รายละเอียดสินค้า</p>
+            <div id="detail">
+            </div>
+        </div>
+    </div>
+    <br><br>
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row">
+                <div class="footer-col">
+                    <!-- <h4>JIBJIB IT</h4> -->
+                    <div style="margin-bottom: 25px;"><img src="img/logo.jpg" alt="LOGO" width="100vw"></div>
+                    <ul>
+                     <img class="img-footer" src="img/store.jpg" alt="store">
+                    </ul>
+                </div>
+                <div class="footer-col">
+                 <h4>Online shop</h4>
+                 <ul>
+                     <li><a href="product.html">หน้าสินค้า</a></li>
+                     <li><a href="basket.html">ตะกร้าสินค้า</a></li>
+                     <li><a href="history.html">ประวัติการสั่งซื้อ</a></li>
+                 </ul>
+             </div>
+                <div class="footer-col">
+                    <h4>Contact us</h4>
+                    <ul>
+                        <li><p><i class="fa fa-phone"> 0-1234-5678</i></p></li>
+                        <li><p>ที่อยู่<br>&emsp;ฉลองกรุง 1, ลาดกระบัง, กรุงเทพ 10520<br></p></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Fanpage</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+    <script>
+        $(document).ready(function () {
+            $('#Profile').click(function () {
+                $('#hoverDropdown').toggle(300);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

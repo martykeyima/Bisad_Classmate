@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>payment</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="payment.js" type="module"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/3bee1915b3.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+    <!-- mawin -->
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="number"],
+        textarea {
+            outline: none !important;
+            padding: 0.3rem;
+            border: 1px solid white;
+            cursor: default;
+            transition: all 0.5s;
+            resize: none;
+        }
+
+        input[type='text']:focus {
+            border: 1px solid white;
+        }
+
+        * {
+            margin: 0;
+            box-sizing: border-box;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            /* font-family: 'Kodchasan', sans-serif; */
+            background-image: linear-gradient(109.6deg, rgba(62, 161, 219, 1) 11.2%, rgba(93, 52, 236, 1) 100.2%);
+
+
+
+        }
+
+        .container {
+            width: 70rem;
+            margin: auto;
+            margin-bottom: 155px;
+            /* background-color: red; */
+
+        }
+
+        #save {
+            transition: all 0.3s;
+        }
+
+        #edit {
+            transition: all 0.3s;
+        }
+
+        #save:hover {
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        #edit:hover {
+            opacity: 0.7;
+            transition: all 0.3s;
+        }
+
+        .bank {
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+        .upload {
+            transition: all 0.3s;
+        }
+
+        .upload:hover {
+            transition: all 0.3s;
+            opacity: 0.9;
+        }
+
+        #qty_auto {
+            position: absolute;
+            padding: 1px;
+            background-color: orange;
+            border-radius: 50%;
+            width: 20px;
+            text-align: center;
+            display: none;
+            font-size: 12px;
+            top: -10px;
+            right: 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="product.html" style="margin-left: 10%;">
+            <img src="img/logo.jpg" alt="LOGO" width="100vw"></a>
+        </a>
+        <nav>
+            <div class="nav_link"><a href="history.html" id="history"
+                    style="font-weight: bold;cursor: pointer;">ประวัติการสั่งซื้อ</a>
+            </div>
+            <a href="basket.html" id="basketicon" style="position: relative;" class="nav_link"><i class="fa fa-shopping-cart"
+                    aria-hidden="true"></i>
+                <p style="position: absolute;" id="qty_auto"></p>
+            </a>
+            <div class="nav_link" style="position: relative;">
+                <a id="Profile" class="user" style="margin-right: 100px;cursor: pointer;"><img src="" alt=""
+                    id="profile33" width="25px" height="25px" style="object-fit: cover; border-radius: 100%;position: relative;top: -2px;"></a>
+                <div id="hoverDropdown" class="hoverDropdown"
+                    style="position: absolute; display: none; background-color: white;">
+                    <p><a class="menu" href="Profile.html">บัญชี</a></p>
+                    <p><a id="approveid" class="menu" href="approve.html">อนุมติสินค้า</a></p>
+                    <div class="d-flex justify-content-end">
+                        <button id="out" class="out">Out</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <br><br><br><br>
+    <div class="container">
+        <br>
+        <h1 style="color: white;">ชำระเงิน</h1>
+        <br>
+        <div class="row">
+            <div class="col-md-7">
+                <div class="address" style="background-color: white; position: relative;">
+                    <div class="top-address d-flex justify-content-between"
+                        style="padding: .5rem .5rem; background-color: #258b23;color: white;">
+                        <span>รายละเอียดของคุณ</span>
+                        <span id="edit" style="cursor: pointer;">แก้ไข</span>
+                        <span id="save" style="cursor: pointer;display: none;">บันทึก</span>
+                    </div>
+                    <div class="address-detail" style="padding: .5rem .5rem;">
+                        <p><span style="margin-left: 5px;margin-right: 5px;">ชื่อ</span><input type="text" id="name" readonly>&emsp;เบอร์ <input
+                                oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                type="number" maxlength="10" id="phone" readonly></p>
+                        <p>
+                            <span style="margin-left: 5px;">ที่อยู่</span>
+                            <textarea name="" id="address" style="width: 100%;" rows="2" readonly></textarea></p>
+                    </div>
+                    <!-- <div class="d-flex justify-content-end" style="margin-right: 10px;">
+                        <p id="save">save</p>
+                    </div> -->
+
+                </div>
+                <br>
+                <div style="background-color: white; position: relative;">
+                    <div class="top-address d-flex"
+                        style="padding: .5rem .5rem; background-color: #258b23;color: white;">
+                        <span>ธนาคาร</span>
+                    </div>
+                    <br>
+                    <div class="d-flex justify-content-around" style="padding-bottom: 50px;">
+                        <div class="bank">
+                            <img src="https://i.pinimg.com/564x/69/4f/80/694f805cf37275746e7ecd7f839d5001.jpg" alt=""
+                                style="width: 130px;">
+                            <div style="text-align: center; background-color: rgb(246, 236, 236); padding: 15px 0px;">
+                                เลขที่บัญชี<br>409-323-0040
+                            </div>
+                        </div>
+                        <div class="bank">
+                            <div style="width: 130px;height: 73px; overflow: hidden; position: relative;">
+                                <img src="https://i0.wp.com/www.9tana.com/wp-content/uploads/2020/04/kbank.jpg?fit=620%2C326&ssl=1&resize=1280%2C720"
+                                    alt="" style="width: 130px;position: absolute;">
+                            </div>
+                            <div style="text-align: center; background-color: rgb(246, 236, 236); padding: 15px 0px;">
+                                เลขที่บัญชี<br>409-323-0040
+                            </div>
+                        </div>
+                        <div class="bank">
+                            <div style="width: 130px;height: 73px; overflow: hidden; position: relative;">
+                                <img src="https://aec10news.com/wp-content/uploads/2020/11/218.jpg" alt=""
+                                    style="width: 130px;position: absolute;">
+                            </div>
+                            <div style="text-align: center; background-color: rgb(246, 236, 236); padding: 15px 0px;">
+                                เลขที่บัญชี<br>409-323-0040
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="payment">
+                    <div class="top-address d-flex"
+                        style="padding: .5rem .5rem; background-color: #258b23;color: white; ">
+                        <span>ชำระเงิน</span>
+                    </div>
+                    <div style="padding: .5rem .5rem; background-color: white;">
+                        <div class="d-flex justify-content-center">
+                            <img src="" id="slip" style="width: 130px;display: none;">
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <p class="upload" id="choose"
+                                style="padding: .5rem 1rem; background: #258b23;color: white; font-size: 14px; cursor: pointer;">
+                                อัปโหลดสลิป</p>
+                            <p class="upload" id="remove"
+                                style="padding: .5rem 1rem; background: #D95252; color: white;display: none; font-size: 14px; cursor: pointer;">
+                                ยกเลิกสลิป</p>
+                            <input type="file" name="" id="file" style="display: none;" accept="image/*" required>
+                        </div>
+                        <h5>สรุปคำสั่งซื้อ</h5>
+                        <p class="d-flex justify-content-between"><span id="order"></span><span id="total1"></span></p>
+                        <p class="d-flex justify-content-between"><span>ค่าขนส่ง</span><span>฿0</span></p>
+                        <hr>
+                        <p class="d-flex justify-content-between"><span style="font-weight: bold;">รวม</span>
+                            <span style="font-weight: bold; color: #D95252;font-size: 20px;" id="total2"></span>
+                        </p>
+                        <div class="d-flex justify-content-end">
+                            <button id="pay" class="upload"
+                                style="padding: .5rem 1rem; border: none;background-color: #258b23;color: white;">ชำระเงิน</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row">
+                <div class="footer-col">
+                    <!-- <h4>JIBJIB IT</h4> -->
+                    <div style="margin-bottom: 25px;"><img src="img/logo.jpg" alt="LOGO" width="100vw"></div>
+                    <ul>
+                        <img class="img-footer" src="img/store.jpg" alt="store">
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Online shop</h4>
+                    <ul>
+                        <li><a href="product.html">หน้าสินค้า</a></li>
+                        <li><a href="basket.html">ตะกร้าสินค้า</a></li>
+                        <li><a href="history.html">ประวัติการสั่งซื้อ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact us</h4>
+                    <ul>
+                        <li>
+                            <p><i class="fa fa-phone"> 0-1234-5678</i></p>
+                        </li>
+                        <li>
+                            <p>ที่อยู่<br>&emsp;ฉลองกรุง 1, ลาดกระบัง, กรุงเทพ 10520<br></p>
+                        </li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Fanpage</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script>
+        $(document).ready(function () {
+            $('#Profile').click(function () {
+                $('#hoverDropdown').toggle(300);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

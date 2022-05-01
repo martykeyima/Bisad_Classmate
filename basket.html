@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>basket</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="basket.js" type="module"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <script src="https://kit.fontawesome.com/3bee1915b3.js" crossorigin="anonymous"></script>
+
+    <!-- mawin -->
+    <link rel="stylesheet" href="navbar.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        body {
+            font-family: 'Kanit', sans-serif;
+            background-image: linear-gradient(109.6deg, rgba(62, 161, 219, 1) 11.2%, rgba(93, 52, 236, 1) 100.2%);
+        }
+
+        .container {
+            width: 930px;
+            margin-top: 0 auto;
+        }
+
+        .card-title {
+            font-size: 1rem;
+        }
+
+        .card-price {
+            font-size: 2rem;
+            text-align: end;
+            color: #D95252;
+            font-weight: bold;
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            right: 10%;
+        }
+
+        .parentplusminus {
+            position: absolute;
+            top: 51%;
+            transform: translateY(-50%);
+            right: 27%;
+
+        }
+
+        .fa-trash-alt {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.5s;
+        }
+
+        .fa-trash-alt:hover {
+            color: red;
+            transition: all 0.3s;
+        }
+
+
+        .card {
+            position: relative;
+            padding: 3rem;
+            border-radius: 10px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .payment {
+            padding: 40px 5px;
+            border-radius: 1rem;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            background-color: white;
+            width: 60%;
+            position: relative;
+            /* left: 51%; */
+        }
+
+        #p-payment {
+            text-align: center;
+            font-size: 1.75rem;
+            font-weight: bold;
+
+        }
+
+        .btn1 {
+            position: relative;
+            border-radius: .5rem;
+            background-color: white;
+            border: white;
+            background-color: #033A3A;
+            padding: .5rem 1rem;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.25rem;
+            color: white;
+            transition: all 0.3s;
+
+
+        }
+
+        .btn1:hover {
+            transition: all 0.3s;
+            background-color: #1c6969;
+        }
+
+        .paragraph {
+            user-select: none;
+            -moz-user-select: none;
+            -webkit-user-select: none;
+            -ms-user-select: none;
+        }
+
+        .update {
+            padding: 5px 10px;
+            background-color: #eff0f5;
+            font-size: 15px;
+            margin-left: 7px;
+            margin-right: 14px;
+            color: #a1a1a2;
+            transition: all 0.5s;
+        }
+
+        .minus {
+            cursor: pointer;
+        }
+
+        .minus:hover {
+            background-color: #c1c1c7;
+            transition: all 0.5s;
+        }
+
+        .plus {
+            cursor: pointer;
+        }
+
+        .plus:hover {
+            background-color: #c1c1c7;
+            transition: all 0.5s;
+        }
+
+        .qty {
+            border: none;
+            outline: none;
+            width: 20px;
+        }
+
+        #qty_auto {
+            position: absolute;
+            padding: 1px;
+            background-color: orange;
+            border-radius: 50%;
+            width: 20px;
+            text-align: center;
+            display: none;
+            font-size: 12px;
+            top: -10px;
+            right: 1px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a href="product.html" style="margin-left: 10%;">
+            <img src="img/logo.jpg" alt="LOGO" width="100vw"></a>
+        </a>
+        <!-- <nav>
+            <div class="nav_link"><a href="history.html" style="font-weight: bold;">ประวัติการสั่งซื้อ</a></div>
+            <a id="basketicon" style="position: relative;color: black;" class="nav_link"><i class="fa fa-shopping-cart"
+                    aria-hidden="true"></i>
+                <p style="position: absolute;" id="qty_auto"></p>
+            </a>
+            <div class="nav_link" style="position: relative;">
+                <a id="Profile" class="user" style="margin-right: 100px;cursor: pointer;"><i class="fa fa-user-circle"
+                        aria-hidden="true"></i></a>
+                <div id="hoverDropdown" class="hoverDropdown"
+                    style="position: absolute; display: none; background-color: white;overflow: hidden;">
+                    <p><a class="menu" href="Profile.html">บัญชี</a></p>
+                    <p><a id="approveid" class="menu" href="approve.html">อนุมติสินค้า</a></p>
+                    <div class="d-flex justify-content-end">
+                        <button id="out" class="out">Out</button>
+                    </div>
+                </div>
+            </div>
+        </nav> -->
+        <nav>
+            <div class="nav_link"><a href="history.html" id="history" style="font-weight: bold;cursor: pointer;">ประวัติการสั่งซื้อ</a>
+            </div>
+            <a id="basketicon" style="position: relative;" class="nav_link"><i class="fa fa-shopping-cart"
+                    aria-hidden="true"></i>
+                <p style="position: absolute;" id="qty_auto"></p>
+            </a>
+            <div class="nav_link" style="position: relative;">
+                <a id="Profile" class="user" style="margin-right: 100px;cursor: pointer;"><img src="" alt=""
+                    id="profile33" width="25px" height="25px" style="object-fit: cover; border-radius: 100%;position: relative;top: -2px;"></a>
+                <div id="hoverDropdown" class="hoverDropdown"
+                    style="position: absolute; display: none; background-color: white;">
+                    <p><a class="menu" href="Profile.html">บัญชี</a></p>
+                    <p><a id="approveid" class="menu" href="approve.html">อนุมติสินค้า</a></p>
+                    <div class="d-flex justify-content-end">
+                        <button id="out" class="out">Out</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container" id="container">
+
+        <div style="height: 150px;"></div>
+        <h1 style="color: white;">ตะกร้าสินค้า</h1>
+        <br>
+        <div class="row" id="row">
+        </div>
+        <br><br>
+
+        <div class="d-flex justify-content-end">
+            <div class="payment">
+                <p id="p-payment"></p>
+                <button id="btn1" class="btn1 d-flex justify-content-center"
+                    >ชำระเงิน</button>
+            </div>
+        </div>
+
+    </div>
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row">
+                <div class="footer-col">
+                    <!-- <h4>JIBJIB IT</h4> -->
+                    <div style="margin-bottom: 25px;"><img src="img/logo.jpg" alt="LOGO" width="100vw"></div>
+                    <ul>
+                     <img class="img-footer" src="img/store.jpg" alt="store">
+                    </ul>
+                </div>
+                <div class="footer-col">
+                 <h4>Online shop</h4>
+                 <ul>
+                     <li><a href="product.html">หน้าสินค้า</a></li>
+                     <li><a href="basket.html">ตะกร้าสินค้า</a></li>
+                     <li><a href="history.html">ประวัติการสั่งซื้อ</a></li>
+                 </ul>
+             </div>
+                <div class="footer-col">
+                    <h4>Contact us</h4>
+                    <ul>
+                        <li><p><i class="fa fa-phone"> 0-1234-5678</i></p></li>
+                        <li><p>ที่อยู่<br>&emsp;ฉลองกรุง 1, ลาดกระบัง, กรุงเทพ 10520<br></p></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Fanpage</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+    <script>
+        $(document).ready(function () {
+            $('#Profile').click(function () {
+                $('#hoverDropdown').toggle(300);
+            });
+        });
+    </script>
+
+</body>
+
+</html>

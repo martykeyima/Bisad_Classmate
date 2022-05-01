@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>products</title>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="products.js" type="module"></script>
+    <script src="https://kit.fontawesome.com/3bee1915b3.js" crossorigin="anonymous"></script>
+
+    <!-- mawin -->
+    <link rel="stylesheet" href="navbar.css">
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+        integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+
+    <style>
+        * {
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-image: linear-gradient(109.6deg, rgba(62, 161, 219, 1) 11.2%, rgba(93, 52, 236, 1) 100.2%);
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .container {
+            width: 1000px;
+            margin-left: 400px;
+            /* z-index: -1; */
+            /* margin: 0 auto; */
+        }
+
+        .card {
+            position: relative;
+            border-radius: 15px;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            /* z-index: -1; */
+            height: 470px;
+            margin-bottom: 35px;
+            transform: translateY(0px);
+            transition: all 0.3s;
+            height: 500px;
+        }
+
+        .card-title {
+            color: black;
+        }
+
+        .del {
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            cursor: pointer;
+            padding: .25rem .5rem;
+            background-color: indianred;
+            color: white;
+        }
+
+        .del:hover {
+            background-color: rgb(182, 72, 72);
+        }
+
+        .fas {
+            position: absolute;
+            top: 5px;
+            right: 25px;
+            cursor: pointer;
+            padding: .25rem .5rem;
+            color: #A6938F;
+            /* background-color: indianred; */
+            /* color: white; */
+        }
+
+        .fas:hover {
+            color: #7a5f59;
+        }
+
+        .card-body {
+            position: relative;
+        }
+
+        .price_span {
+            font-size: 20px;
+            position: absolute;
+            right: 30px;
+            bottom: 90px;
+            font-weight: bold;
+            /* color: #c66162; */
+            color: #D95252;
+        }
+
+        h1 {
+            text-align: center;
+            color: #3E5923;
+        }
+
+        h5 {
+            font-size: .85rem;
+        }
+
+        .buy {
+            position: absolute;
+            width: 70px;
+            left: 50px;
+            bottom: 35px;
+            /* background-color: #5a5857; */
+            background-color: #033A3A;
+            color: white;
+            border-radius: 2rem;
+        }
+
+        .basket {
+            position: absolute;
+            width: 70px;
+            bottom: 35px;
+            right: 55px;
+            background-color: #033A3A;
+            /* background-color: #5a5857; */
+            color: white;
+            border-radius: 2rem;
+        }
+
+        .btn:hover {
+            background-color: #1c6969;
+        }
+
+        .btn:focus {
+            outline: none !important;
+        }
+
+        #addp {
+            color: #f0e4e4;
+            background-color: #3E5923;
+            padding: 1rem 1rem;
+            width: 15rem;
+            border-radius: 5rem;
+            font-size: 20px;
+        }
+
+        #search {
+            padding: 4px 10px;
+            border-radius: 10px;
+            border: none;
+            outline: none;
+            margin-left: 5px;
+            width: 100%;
+            font-size: 15px;
+            color: #333;
+        }
+
+        .psearch {
+            border-radius: 20px;
+            background-color: white;
+            width: 500px;
+            padding: 5px 10px;
+            margin-bottom: 20px;
+        }
+
+        .psearch:hover {
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .card:hover {
+            transform: translateY(-20px);
+            transition: all 0.7s;
+            z-index: 1;
+        }
+
+        .filter {
+            padding: .5rem 0rem;
+            position: absolute;
+            left: 10px;
+            top: 257px;
+            width: 380px;
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+
+
+        }
+
+        .filter-btn {
+            display: block;
+            text-align: start;
+            padding: 0.5rem 2rem;
+            border: none;
+            outline: none;
+            width: 380px;
+            cursor: pointer;
+            background-color: white;
+
+        }
+
+        .filter-btn:hover {
+            color: white;
+            background-color: #e79090;
+        }
+
+        .filter-btn:focus {
+            color: white;
+            outline: none;
+            background-color: #D95252;
+        }
+
+        .filter-price {
+            padding: .5rem 1rem;
+            position: fixed;
+            left: 10px;
+            top: 650px;
+            width: 380px;
+            background-color: white;
+            border-radius: 1rem;
+            overflow: hidden;
+        }
+
+
+
+
+
+        input[type=range] {
+            -webkit-appearance: none;
+            margin: 20px 0;
+            width: 100%;
+        }
+
+        input[type=range]:focus {
+            outline: none;
+        }
+
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%;
+            height: 4px;
+            cursor: pointer;
+            animate: 0.2s;
+            background: #03a9f4;
+            border-radius: 25px;
+        }
+
+        input[type=range]::-webkit-slider-thumb {
+            height: 20px;
+            width: 20px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 0 4px 0 rgba(0, 0, 0, 1);
+            cursor: pointer;
+            -webkit-appearance: none;
+            margin-top: -8px;
+        }
+
+        input[type=range]:focus::-webkit-slider-runnable-track {
+            background: #03a9f4;
+        }
+
+        .range-wrap {
+            /* width: 500px; */
+            position: absolute;
+        }
+
+        .range-value {
+            position: absolute;
+            /* top: ; */
+        }
+
+        .range-value span {
+            width: 50px;
+            height: 24px;
+            line-height: 24px;
+            text-align: center;
+            /* background: #03a9f4; */
+            background-color: red;
+            color: #fff;
+            font-size: 12px;
+            display: block;
+            position: absolute;
+            left: 50%;
+            top: -20px;
+            transform: translate(-50%, 0);
+            border-radius: 6px;
+        }
+
+        .range-value span:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            border-top: 10px solid red;
+            border-left: 5px solid transparent;
+            border-right: 5px solid transparent;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            margin-top: -1px;
+        }
+
+        #qty_auto {
+            position: absolute;
+            padding: 1px;
+            background-color: orange;
+            border-radius: 50%;
+            width: 20px;
+            text-align: center;
+            display: none;
+            font-size: 12px;
+            top: -10px;
+            right: 1px;
+            cursor: pointer;
+        }
+        .card-img-top {
+            object-fit: cover;
+            width: 100%;
+            height: 300px;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <a style="margin-left: 10%;cursor: pointer;">
+            <img src="img/logo.jpg" alt="LOGO" width="100vw">
+        </a>
+        <nav>
+            <div class="nav_link"><a id="history" style="font-weight: bold;cursor: pointer;">ประวัติการสั่งซื้อ</a>
+            </div>
+            <a id="basketicon" style="position: relative;" class="nav_link"><i class="fa fa-shopping-cart"
+                    aria-hidden="true"></i>
+                <p style="position: absolute;" id="qty_auto"></p>
+            </a>
+            <div class="nav_link" style="position: relative;">
+                <a id="Profile" class="user" style="margin-right: 100px;cursor: pointer;"><img src="" alt=""
+                    id="profile33" width="25px" height="25px" style="object-fit: cover; border-radius: 100%;position: relative;top: -2px;"></a>
+                <div id="hoverDropdown" class="hoverDropdown"
+                    style="position: absolute; display: none; background-color: white;">
+                    <p><a class="menu" href="Profile.html">บัญชี</a></p>
+                    <p><a id="approveid" class="menu" href="approve.html">อนุมติสินค้า</a></p>
+                    <div class="d-flex justify-content-end">
+                        <button id="out" class="out">Out</button>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="filter">
+        <p style="text-align: center;margin-top: 10px;">ยี่ห้อโน๊ตบุ๊ค</p>
+        <hr>
+        <button class="filter-btn" onclick="filterall(); ">
+            ทั้งหมด
+        </button>
+        <button class="filter-btn" onclick="filter('ACER'); ">
+            ACER
+        </button>
+        <button class="filter-btn" onclick="filter('ASUS'); ">
+            ASUS
+        </button>
+        <button class="filter-btn" onclick="filter('CONCEPTD'); ">
+            CONCEPTD
+        </button>
+        <button class="filter-btn" onclick="filter('DELL'); ">
+            DELL
+        </button>
+        <button class="filter-btn" onclick="filter('HP'); ">
+            HP
+        </button>
+        <button class="filter-btn" onclick="filter('LENOVO'); ">
+            LENOVO
+        </button>
+    </div>
+
+    <!-- filter price -->
+    <div class="range-wrap filter-price">
+        <p style="text-align: center;margin-top: 10px;">เลทราคา</p>
+        <hr>
+        <br>
+        <div class="range-value" id="rangeV"></div>
+        <input style="" id="range" type="range" min="0" max="125900" value="125900" step="1000">
+    </div>
+
+    <br><br>
+    <br>
+
+    <!-- search -->
+    <div class="d-flex justify-content-center" style="margin-top: 100px;">
+        <div class="psearch  d-flex align-items-center">
+            <i style="color: rgb(217, 201, 201);" class="fa fa-search" aria-hidden="true"></i>
+            <input id="search" type="search">
+        </div>
+    </div>
+    <div class="container" id="container" style="min-height: 400px;">
+
+        <br>
+        <div class="back2">
+            <div class="row" id="row"></div>
+        </div>
+        <br><br>
+    </div>
+    <div class="d-flex justify-content-center">
+        <button id='addp' type="button" class="btn" data-toggle="modal" data-target="#exampleModal">
+            Add New Product
+        </button>
+    </div>
+    <br><br>
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row">
+                <div class="footer-col">
+                    <!-- <h4>JIBJIB IT</h4> -->
+                    <div style="margin-bottom: 25px;"><img src="img/logo.jpg" alt="LOGO" width="100vw"></div>
+                    <ul>
+                     <img class="img-footer" src="img/store.jpg" alt="store">
+                    </ul>
+                </div>
+                <div class="footer-col">
+                 <h4>Online shop</h4>
+                 <ul>
+                     <li><a href="product.html">หน้าสินค้า</a></li>
+                     <li><a href="basket.html">ตะกร้าสินค้า</a></li>
+                     <li><a href="history.html">ประวัติการสั่งซื้อ</a></li>
+                 </ul>
+             </div>
+                <div class="footer-col">
+                    <h4>Contact us</h4>
+                    <ul>
+                        <li><p><i class="fa fa-phone"> 0-1234-5678</i></p></li>
+                        <li><p>ที่อยู่<br>&emsp;ฉลองกรุง 1, ลาดกระบัง, กรุงเทพ 10520<br></p></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Fanpage</h4>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+    <script>
+        function filterall() {
+            const col = document.getElementsByClassName('col-4');
+            for (let i = 0; i < col.length; i++) {
+                // col[i].style.display = 'block';
+                $(document).ready(function () {
+                    $(col[i]).show(300);
+                });
+            }
+        }
+
+        function filter(txt) {
+            txt = txt.toLowerCase()
+            const col = document.getElementsByClassName('col-4');
+            const title = document.getElementsByClassName('card-title');
+            console.log('title', title[0]);
+            console.log('parameter', txt)
+
+            for (let i = 0; i < title.length; i++) {
+                if (title[i].innerText.toLowerCase().includes(txt)) {
+                    $(document).ready(function () {
+                        $(col[i]).show(300);
+                    });
+                    // col[i].style.display = 'block';
+                } else {
+                    // col[i].style.display = "none";
+                    $(document).ready(function () {
+                        $(col[i]).hide();
+                    });
+                }
+            }
+        }
+
+        $(document).ready(function () {
+            $('#Profile').click(function () {
+                $('#hoverDropdown').toggle(300);
+            });
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="navbar.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+</head>
+
+<body>
+  <header>
+    <a href="product.html" style="margin-left: 10%;">
+      <img src="img/logo.jpg" alt="LOGO" width="100vw"></a>
+    </a>
+    <nav>
+      <div class="nav_link"><a href="history.html" style="font-weight: bold;">ประวัติการสั่งซื้อ</a></div>
+      <a class="nav_link" href="basket.html"><i class="fa fa-shopping-cart" aria-hidden="true"></i></a>
+      <div class="nav_link" style="position: relative;">
+        <a id="Profile" class="user" href="#" style="margin-right: 100px;"><i class="fa fa-user-circle"
+            aria-hidden="true"></i></a>
+        <div id="hoverDropdown" class="hoverDropdown"
+          style="position: absolute; display: none; background-color: white;">
+          <p><a class="menu" href="Profile.html">บัญชี</a></p>
+          <p><a class="menu" href="approve.html">อนุมติสินค้า</a></p>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <script>
+    $(document).ready(function(){
+      $('#Profile').click(function() {
+        $('#hoverDropdown').toggle(300);
+      });
+    });
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>updateP</title>
+    <script src="updateP.js" type="module"></script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            background-image: linear-gradient(109.6deg, rgba(62, 161, 219, 1) 11.2%, rgba(93, 52, 236, 1) 100.2%);
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .container {
+            width: 70rem;
+            margin: 0 auto;
+
+
+        }
+
+        /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+            -moz-appearance: textfield;
+        }
+
+        .back-form {
+            padding: 20px 40px;
+            width: 55rem;
+            background-color: white;
+            margin: 0 auto;
+            border-radius: 2rem;
+            box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+        label {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <br><br>
+        <h1 style="text-align: center; color: white;">แก้ไขสินค้า</h1>
+        <br><br>
+
+        <div class="back-form">
+            <form id="updateP">
+                <div class="mb-3 d-flex justify-content-center">
+                    <div class="d-flex align-items-center">
+                        <div>
+                            <img src="" alt="" id="show" style="width: 200px; border-radius: 2rem;">
+                        </div>
+                        <div>
+                            <img src="" alt="" id="output_shoppic" style="width: 200px; border-radius: 2rem;">
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div>
+                        <label for="image" class="form-label">Image File</label>
+                    </div>
+                    <div class="d-flex justify-content-center"
+                        style="border: 1px solid #ccc; padding: .5rem 1rem;border-radius: 5px;">
+                        <input type="file" onchange="previewFile(event)">
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Image Url</label>
+                    <input type="text" class="form-control" id="src" name="src" autofocus>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Product Name</label>
+                    <input type="text" class="form-control" name="name" required>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Price</label>
+                    <input type="number" class="form-control" name="price" required>
+                </div>
+                <div class="mb-3">
+                    <label for="image" class="form-label">Detail</label>
+                    <textarea class="form-control" rows="6" name="detail" required></textarea>
+                </div>
+
+                <button type="submit" class="btn btn-primary">SAVE</button>
+            </form>
+        </div>
+
+    </div>
+    <br><br>
+
+    <script>
+
+
+        function previewFile(event) {
+            // console.log('commy')
+            var file = document.querySelector('input[type=file]').files[0];
+            var reader = new FileReader();
+
+            reader.onloadend = function () {
+                // console.log(reader.result)
+                // const lll = reader.result;
+                sessionStorage.setItem("srcproduct", reader.result);
+            }
+            if (file) {
+                reader.readAsDataURL(file);
+            } else {
+                console.log('pear')
+            }
+
+            var preview = document.getElementById("output_shoppic");
+            if (event.target.files.length > 0) {
+                var src = URL.createObjectURL(event.target.files[0]);
+                preview.src = src;
+                preview.style.display = "block";
+            } else if (event.target.files.length == 0) {
+                preview.style.display = "none";
+            }
+
+
+        }
+    </script>
+</body>
+
+</html>
