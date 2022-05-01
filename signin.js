@@ -66,7 +66,7 @@ form.addEventListener('submit', async (e) => {
     if (userlis.includes(username)) {
         console.log('มีนะคอม')
     } else {
-        alert('ใส่ชื่อผู้ใช้ผิด')
+        alert('ไม่มีชื่อผู้ใช้นี้ในระบบ')
     }
 
 });
